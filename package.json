@@ -1,23 +1,28 @@
 {
   "name": "05-noc",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "tsnd --respawn --clear src/app.ts",
     "build": "rimraf ./dist && tsc",
     "start": "npm run build && node dist/app.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stu0202/05-NOC.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Stu0202/05-NOC/issues"
+  },
+  "homepage": "https://github.com/Stu0202/05-NOC#readme",
+  "description": "",
   "devDependencies": {
-    "@types/node": "^22.5.5",
+    "@types/node": "^24.0.3",
     "rimraf": "^6.0.1",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.6.2"
-  },
-  "dependencies": {
-    "cron": "^3.1.7"
+    "typescript": "^5.8.3"
   }
 }
