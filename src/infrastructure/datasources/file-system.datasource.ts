@@ -70,7 +70,7 @@ export class FileSystemDataSource implements LogDatasource{
         switch (severityLevel) {
             case LogSeverityLevel.low:
                 return this.getLogsFromFile(this.allLogsPath);
-                break;
+               
             
             case LogSeverityLevel.medium:  
                 return this.getLogsFromFile(this.mediumLogsPath)
@@ -80,7 +80,7 @@ export class FileSystemDataSource implements LogDatasource{
                 
             default:
                 throw new Error(`${severityLevel} not implemented`)
-                break;
+              
         }
     }
 
