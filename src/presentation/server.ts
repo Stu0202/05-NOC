@@ -17,7 +17,7 @@ export class Server{
             '*/5 * * * * *',
             () => {
                // new CheckService().execute('https://google.com')
-               const url = 'http://localhost:3000'
+               const url = 'https://google.com'
                 new CheckService(
                     fileSystemlogRepository,
                     () => console.log(`${url} is ok` ),
