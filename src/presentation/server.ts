@@ -19,15 +19,9 @@ export class Server{
 
         const emailService = new EmailService()
         // console.log('Server Running...')
-        emailService.sendEmail({
-            to:'jmreyes7@espe.edu.ec',
-            subject:'Logs de Sistema',
-            htmlBody: `
-            <h3>Logs de Sistema - NOC</h3>
-            <p>Prueba de envio de emails con node y nodemailer</p>
-            <p>Ver logs adjuntos</p>
-            `
-        })
+        emailService.sendEmailWithFileSystemLogs([
+            'jmreyes7@espe.edu.ec'
+        ])
 
 
         // CronService.creteJob(
