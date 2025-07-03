@@ -3,6 +3,8 @@ import { CheckService } from "../domain/use-cases/checks/check-service";
 import { CronService } from "./cron/cron-service"
 import { LogRepositoryImpl } from "../infrastructure/repositories/log.repository.impl";
 import { FileSystemDataSource } from "../infrastructure/datasources/file-system.datasource";
+import { envs } from "../config/plugin/envs.plugin";
+import { EmailService } from "./email/email.service";
 
 
 const fileSystemlogRepository = new LogRepositoryImpl(
@@ -12,9 +14,21 @@ const fileSystemlogRepository = new LogRepositoryImpl(
 export class Server{
 
  public static start(){
-        console.log('Server Running...')
-
+   
         //Mandar email
+
+        const emailService = new EmailService()
+        // console.log('Server Running...')
+        emailService.sendEmail({
+            to:'jmreyes7@espe.edu.ec',
+            subject:'Logs de Sistema',
+            htmlBody: `
+            <h3>Logs de Sistema - NOC</h3>
+            <p>Prueba de envio de emails con node y nodemailer</p>
+            <p>Ver logs adjuntos</p>
+            `
+        })
+
 
         // CronService.creteJob(
         //     '*/5 * * * * *',
