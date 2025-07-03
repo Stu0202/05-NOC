@@ -13,18 +13,21 @@ export class Server{
 
  public static start(){
         console.log('Server Running...')
-        CronService.creteJob(
-            '*/5 * * * * *',
-            () => {
-               // new CheckService().execute('https://google.com')
-               const url = 'https://google.com'
-                new CheckService(
-                    fileSystemlogRepository,
-                    () => console.log(`${url} is ok` ),
-                    (error) => console.log(error)
-                ).execute(url)
-            }
-        );
+
+        //Mandar email
+
+        // CronService.creteJob(
+        //     '*/5 * * * * *',
+        //     () => {
+        //        // new CheckService().execute('https://google.com')
+        //        const url = 'https://google.com'
+        //         new CheckService(
+        //             fileSystemlogRepository,
+        //             () => console.log(`${url} is ok` ),
+        //             (error) => console.log(error)
+        //         ).execute(url)
+        //     }
+        // );
       
     }
 }
