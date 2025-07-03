@@ -17,7 +17,9 @@ export class Server{
    
         //Mandar email
 
-        const emailService = new EmailService()
+        const emailService = new EmailService(
+            fileSystemlogRepository
+        )
         // console.log('Server Running...')
         emailService.sendEmailWithFileSystemLogs([
             'jmreyes7@espe.edu.ec'
