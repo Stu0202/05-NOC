@@ -5,6 +5,7 @@ import { LogRepositoryImpl } from "../infrastructure/repositories/log.repository
 import { FileSystemDataSource } from "../infrastructure/datasources/file-system.datasource";
 import { envs } from "../config/plugin/envs.plugin";
 import { EmailService } from "./email/email.service";
+import { sendEmailLogs } from "../domain/use-cases/logsDirectory/email/send-email-logs";
 
 
 const fileSystemlogRepository = new LogRepositoryImpl(
@@ -17,13 +18,19 @@ export class Server{
    
         //Mandar email
 
-        const emailService = new EmailService(
-            fileSystemlogRepository
-        )
+        // const emailService = new EmailService()
+
+        // new sendEmailLogs(
+        //     emailService,
+        //     fileSystemlogRepository
+        // ).execute(
+        //     ['jmreyes7@espe.edu.ec']
+        // )
+
         // console.log('Server Running...')
-        emailService.sendEmailWithFileSystemLogs([
-            'jmreyes7@espe.edu.ec'
-        ])
+        // emailService.sendEmailWithFileSystemLogs([
+        //     'jmreyes7@espe.edu.ec'
+        // ])
 
 
         // CronService.creteJob(
