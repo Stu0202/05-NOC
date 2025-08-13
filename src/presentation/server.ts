@@ -6,10 +6,12 @@ import { FileSystemDataSource } from "../infrastructure/datasources/file-system.
 import { envs } from "../config/plugin/envs.plugin";
 import { EmailService } from "./email/email.service";
 import { sendEmailLogs } from "../domain/use-cases/logsDirectory/email/send-email-logs";
+import { MongoDataSource } from "../infrastructure/datasources/mongo-log.datasource";
 
 
-const fileSystemlogRepository = new LogRepositoryImpl(
-    new FileSystemDataSource()
+const logRepository = new LogRepositoryImpl(
+    //new FileSystemDataSource()
+    new MongoDataSource()
 )
 
 export class Server{
@@ -33,18 +35,18 @@ export class Server{
         // ])
 
 
-        // CronService.creteJob(
-        //     '*/5 * * * * *',
-        //     () => {
-        //        // new CheckService().execute('https://google.com')
-        //        const url = 'https://google.com'
-        //         new CheckService(
-        //             fileSystemlogRepository,
-        //             () => console.log(`${url} is ok` ),
-        //             (error) => console.log(error)
-        //         ).execute(url)
-        //     }
-        // );
+         CronService.creteJob(
+            '*/5 * * * * *',
+             () => {
+                // new CheckService().execute('https://google.com')
+                const url = 'https://google.com'
+                 new CheckService(
+                     logRepository,
+                     () => console.log(`${url} is ok` ),
+                     (error) => console.log(error)
+                 ).execute(url)
+             }
+         );
       
     }
 }
