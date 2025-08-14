@@ -4,11 +4,15 @@ El objetivo de este proyecto es crear una serie de tareas usando Arquitectura Li
 # dev
 1. Clonar el archivo .env.template a .env
 2. Configurar las variables de entorno
-```
-PORT=3000
+3. Ejecutar el comando ```npm install```
+4. Levantar las bases de datos con el comando
 
-MAILER_EMAIL = 
-MAILER_SECRET_KEY = 
+    ```
+    docker compose up -d
 
-PROD= false
-```
+    ```
+
+5. Ejecutar ``` npm run dev ``` 
+
+## Obtener Gmail Key
+[Google AppPasswords](https://myaccount.google.com/u/0/apppasswords)

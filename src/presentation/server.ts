@@ -10,8 +10,8 @@ import { MongoDataSource } from "../infrastructure/datasources/mongo-log.datasou
 
 
 const logRepository = new LogRepositoryImpl(
-    //new FileSystemDataSource()
-    new MongoDataSource()
+    new FileSystemDataSource()
+    //new MongoDataSource()
 )
 
 export class Server{
