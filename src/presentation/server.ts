@@ -8,12 +8,19 @@ import { EmailService } from "./email/email.service";
 import { sendEmailLogs } from "../domain/use-cases/logsDirectory/email/send-email-logs";
 import { MongoDataSource } from "../infrastructure/datasources/mongo-log.datasource";
 import { PostgresLogDataSource } from "../infrastructure/datasources/postgres-log.datasource";
+import { CheckServiceMultiple } from "../domain/use-cases/checks/check-service-multiple";
 
 
-const logRepository = new LogRepositoryImpl(
-    //new FileSystemDataSource()
-    //new MongoDataSource()
-      new PostgresLogDataSource()
+const fsLogRepository = new LogRepositoryImpl(
+    new FileSystemDataSource()
+)
+const mongoLogRepository = new LogRepositoryImpl(
+   
+    new MongoDataSource()
+    
+)
+const postgresLogRepository = new LogRepositoryImpl(
+    new PostgresLogDataSource()
 )
 
 export class Server{
@@ -42,8 +49,8 @@ export class Server{
              () => {
                 // new CheckService().execute('https://google.com')
                 const url = 'https://google.com'
-                 new CheckService(
-                     logRepository,
+                 new CheckServiceMultiple(
+                     [fsLogRepository,mongoLogRepository,mongoLogRepository],
                      () => console.log(`${url} is ok` ),
                      (error) => console.log(error)
                  ).execute(url)
