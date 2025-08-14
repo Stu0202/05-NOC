@@ -7,11 +7,13 @@ import { envs } from "../config/plugin/envs.plugin";
 import { EmailService } from "./email/email.service";
 import { sendEmailLogs } from "../domain/use-cases/logsDirectory/email/send-email-logs";
 import { MongoDataSource } from "../infrastructure/datasources/mongo-log.datasource";
+import { PostgresLogDataSource } from "../infrastructure/datasources/postgres-log.datasource";
 
 
 const logRepository = new LogRepositoryImpl(
-    new FileSystemDataSource()
+    //new FileSystemDataSource()
     //new MongoDataSource()
+      new PostgresLogDataSource()
 )
 
 export class Server{
